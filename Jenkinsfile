@@ -4,7 +4,7 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "MVN3"
-        jdk "jdk8"
+        jdk "JDK8"
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
         
         stage('pullscm') {
             steps {
-                git credentialsId: 'github', url: 'git@github.com:sathishbob/jenkins_test.git'
+                git credentialsId: 'github-credential', url: 'git@github.com:Saneesh/jenkins_test.git'
             }
         }
         
