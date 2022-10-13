@@ -14,6 +14,12 @@ pipeline {
             }
         }
         
+        stage('print') {
+            steps {
+                sh "echo test"
+            }
+        }
+        
         stage('Build') {
             steps {
                 // Run Maven on a Unix agent.
