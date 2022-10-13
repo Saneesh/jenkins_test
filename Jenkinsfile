@@ -1,34 +1,29 @@
 pipeline {
     agent {
-        label 'linux'
+        label 'windows'
     }
     
     tools {
         // Install the Maven version configured as "M3" and add it to the  path.
         maven "MVN3"
-        jdk "JDK8"
+        jdk "jdk8"
     }
 
     stages {
         stage('pullscm') {
             steps {
-                git credentialsId: 'github-credential', url: 'git@github.com:Saneesh/jenkins_test.git'
+                git credentialsId: 'GitHub', url: 'git@github.com:Saneesh/jenkins_test.git'
             }
         }
         
-        stage('print') {
-            steps {
-                sh "echo test"
-            }
-        }
-        
+                
         stage('Build') {
             steps {
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true -f api-gateway clean package"
+                // sh "mvn -Dmaven.test.failure.ignore=true -f api-gateway clean package"
 
                 // To run Maven on a Windows agent, use
-                //bat "mvn -Dmaven.test.failure.ignore=true -f api-gateway clean package"
+                bat "mvn -Dmaven.test.failure.ignore=true -f api-gateway clean package"
             }
 
             post {
