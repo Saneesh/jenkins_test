@@ -50,7 +50,7 @@ pipeline {
                   withCredentials([sshUserPrivateKey(credentialsId: 'github-credential', keyFileVariable: 'SSH_KEY')]) {
                       sh 'echo ssh -i $SSH_KEY -l git -o StrictHostKeyChecking=no \\"\\$@\\" > local_ssh.sh'
                       sh 'chmod +x local_ssh.sh'
-                      withEnv(['GIT_SSH=/var/lib/jenkins/workspace/pipelienfromgit/local_ssh.sh']) {
+                      withEnv(['GIT_SSH=/var/lib/jenkins/workspace/jenkin-pipeline-git/local_ssh.sh']) {
                           sh 'git clone git@github.com:Saneesh/jenkins_test.git'
                           sh '''cd jenkins_test
                           echo test>deploy.txt
