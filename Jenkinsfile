@@ -47,7 +47,7 @@ pipeline {
               success {
                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'TestReport', reportFiles: 'TestReport.html', reportName: 'FunctionalTestReport', reportTitles: '', useWrapperFileDirectly: true])
                    sh 'rm -rf *'
-                  withCredentials([sshUserPrivateKey(credentialsId: 'GitHub', keyFileVariable: 'SSH_KEY')]) {
+                  withCredentials([sshUserPrivateKey(credentialsId: 'github-credential', keyFileVariable: 'SSH_KEY')]) {
                       sh 'echo ssh -i $SSH_KEY -l git -o StrictHostKeyChecking=no \\"\\$@\\" > local_ssh.sh'
                       sh 'chmod +x local_ssh.sh'
                       withEnv(['GIT_SSH=/var/lib/jenkins/workspace/pipelienfromgit/local_ssh.sh']) {
