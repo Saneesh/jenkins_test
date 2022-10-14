@@ -36,7 +36,7 @@ pipeline {
         
         stage('pulltestingcode') {
       steps {
-        git branch: 'main', credentialsId: 'GitHub', url: 'git@github.com:sathishbob/functional-testing.git'
+        git branch: 'main', credentialsId: 'github-credential', url: 'git@github.com:Saneesh/jenkins_test.git'
       }
     }
     stage('execute test') {
